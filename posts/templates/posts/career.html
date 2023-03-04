@@ -1,0 +1,54 @@
+{% extends 'posts/template.html' %}
+{% block head %}
+<title>Blogs | Career</title>
+{% endblock %}
+
+
+{% block navbar %}
+<div class="nav-scroller py-1 mb-2 container">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-secondary nav-link" href="{% url 'frontend' %}">Frontend</a>
+      <a class="p-2 link-secondary nav-link" href="{% url 'backend' %}">Backend</a>
+      <a class="p-2 link-secondary nav-link" href="{% url 'frameworks' %}">Frameworks</a>
+      <a class="p-2 link-secondary nav-link" href="{% url 'languages' %}">Languages</a>
+      <a class="p-2 link-secondary nav-link" href="{% url 'database' %}">Database</a>
+      <a class="p-2 link-secondary nav-link" href="{% url 'hackathons' %}">Hackathons</a>
+      <a class="p-2 link-secondary nav-link" href="{% url 'github' %}">Github</a>
+      <a class="p-2 link-secondary nav-link-active" href="{% url 'career' %}">Career</a>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
+<!-- LARGE CARD ON THE TOP -->
+<main class="container">
+  <div class="row p-4 p-md-5 mb-4 rounded text-bg-dark">
+    <div class="col-7">
+        <h1 class="display-4 fst-italic">Making a Career Transition: Tips and Strategies</h1>
+        <p class="lead my-3">Making a career transition can be both exciting and daunting. Whether you're moving from one industry to another or switching from a corporate job to entrepreneurship, there are several factors to consider before making the leap.</p>
+    </div>
+    <div class="col-4" style="width: 450px;">
+        <img class="card-img-top rounded" src="https://thumbs.dreamstime.com/b/career-development-chart-hand-drawing-blackboard-56251425.jpg"
+            alt="Image" />
+    </div>
+</div>
+<!-- SMALL CARDS IN THE BOTTOM -->
+{% for blog in career_blogs %}
+<div class="row mb-2">
+    <div class="col">
+        <div class=" row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class=" p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">{{blog.category}}</strong>
+                <h3 class="mb-0">{{blog.heading}}</h3>
+                <div class="mb-1 text-muted">{{blog.date}}</div>
+                <p class="card-text mt-2">{{blog.description}}</p>
+                <a href="{% url 'singleBlog' blog.id %}" class="stretched-link">Continue reading</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endfor %}
+</main>
+{% endblock %}

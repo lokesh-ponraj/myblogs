@@ -1,0 +1,35 @@
+{% extends 'posts/template.html' %}
+{% block head %}
+<title>Blogs | Add Data</title>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="d-flex justify-content-center mt-3 mb-3">
+    <div class="card" style="width: max-content;">
+      <h5 class="card-header text-center">Add blogs</h5>
+      <div class="card-body">
+        <select class="form-control mt-2" type="text" placeholder="Category" name="category">
+          <option>Frontend</option>
+          <option>Backend</option>
+          <option>Career</option>
+          <option>Database</option>
+          <option>Frameworks</option>
+          <option>Github</option>
+          <option>Hackathons</option>
+          <option>Languages</option>
+        </select>
+        <input class="form-control mt-2" type="text" placeholder="Heading" name="heading">
+        <input class="form-control mt-2" type="text" placeholder="Description" name="description">
+        <textarea class="form-control mt-2" type="text" placeholder="Content" name="content"></textarea>
+        <input class="form-control mt-2" type="date" placeholder="Date" name="date">
+        <div class="mb-3 mt-3"><button class="btn btn-primary d-block w-100" type="submit"> SUBMIT</button></div>
+      </div>
+    </div>
+  </div>
+  
+</form>
+
+
+{% endblock %}

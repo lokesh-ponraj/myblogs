@@ -1,0 +1,58 @@
+{% extends 'posts/template.html' %}
+{% load static %}
+{% block head %}
+<title>Blogs | Frontend</title>
+{% endblock %}
+
+
+{% block navbar %}
+<div class="nav-scroller py-1 mb-2 container">
+    <nav class="nav d-flex justify-content-between">
+        <a class="p-2 link-secondary nav-link-active" href="{% url 'frontend' %}">Frontend</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'backend' %}">Backend</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'frameworks' %}">Frameworks</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'languages' %}">Languages</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'database' %}">Database</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'hackathons' %}">Hackathons</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'github' %}">Github</a>
+        <a class="p-2 link-secondary nav-link" href="{% url 'career' %}">Career</a>
+    </nav>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<!-- LARGE CARD ON TOP -->
+<main class="container">
+    <div class="row p-4 p-md-5 mb-4 rounded text-bg-dark">
+        <div class="col">
+            <h1 class="display-4 fst-italic">Introduction to frontend development</h1>
+            <p class="lead my-3 ">This blog post would provide an overview of frontend development, what it involves, and
+                how it differs from backend development. It would be geared towards people who are new to programming or
+                who are interested in learning about frontend development.</p>
+        </div>
+        <div class="col-4" style="width: 450px;">
+            <img class="card-img-top rounded" src="https://cdn.lifehack.org/wp-content/uploads/2013/07/best-blogs.jpeg"
+                alt="Image" />
+        </div>
+    </div>
+<!-- SMALL CARDS IN THE BOTTOM -->
+  {% for blog in frontend_blogs %}
+    <div class="row mb-2">
+        <div class="col">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
+                <div class="col-8 p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">{{blog.category}}</strong>
+                    <h3 class="mb-0">{{blog.heading}}</h3>
+                    <div class="mb-1 text-muted">{{blog.date}} by <a href="/">{{user.username}}</a></div>
+                    <p class="card-text mt-2">{{blog.description}}</p>
+                    <a href="{% url 'singleBlog' blog.id %}"><button class="btn btn-primary">Continue reading</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+
+{% endblock %}

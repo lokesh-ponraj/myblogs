@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block head %}
+
+  {% endblock %}
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+
+</head>
+
+<body id="page-top">
+
+  <div class="container">
+    <header class="blog-header lh-1 py-3">
+      <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4">
+          <a class="blog-header-logo text-success nav-link">My Blogs</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <a class="link-secondary" href="{% url 'data' %}" aria-label="Add Blogs"><button
+              class="btn btn-success me-2 btn-sm">Add Blogs </button>
+
+          </a>
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <span class="d-none d-lg-inline me-2 text-gray-600 small">{{user.username}}</span>
+              <img src="{% static 'img/avatars/avatar1.jpeg' %}" alt="mdo" width="32" height="32"
+                class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  {% block navbar %}
+
+  {% endblock %}
+
+
+
+  {% block content %}
+
+  {% endblock %}
+
+
+
+  {% block footer %}
+  <footer class="blog-footer">
+    <p>Blogs page by <a href="https:lokesh-me.netlify.app">Lokesh</a>.</p>
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer>
+  {% endblock %}
+
+
+
+
+
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/theme.js' %}"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
